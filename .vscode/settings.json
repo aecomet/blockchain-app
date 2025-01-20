@@ -1,0 +1,15 @@
+{
+  "prettier.configPath": "prettier.config.js",
+  "prettier.useEditorConfig": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": ["source.addMissingImports", "source.organizeImports"],
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.insertSpaces": true,
+  "[solidity]": {
+    "editor.defaultFormatter": "JuanBlanco.solidity",
+    "editor.tabSize": 2
+  }
+}
