@@ -19,3 +19,6 @@ pnpm dev
 # deploy
 pnpm deploy:local
 ```
+
+see detail: https://hardhat.org/tutorial
+
