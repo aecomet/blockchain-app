@@ -11,9 +11,11 @@
   "dependencies": {
     "@mantine/core": "^7.16.1",
     "@mantine/hooks": "^7.16.1",
+    "@opensea/seaport-js": "2.0.7",
     "@tabler/icons-react": "^3.28.1",
     "bufferutil": "^4.0.9",
     "ethers": "^6.13.5",
+    "ethersV5": "npm:ethers@5.7.2",
     "next": "15.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
