@@ -7,6 +7,7 @@
     "build": "hardhat compile",
     "test": "hardhat test",
     "dev": "hardhat node",
+    "clean": "hardhat clean",
     "deploy:local": "hardhat run scripts/deploy-local.ts --network localhost"
   },
   "keywords": [],
@@ -18,6 +19,6 @@
     "prettier": "^3.4.2"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.9.3"
+    "@openzeppelin/contracts": "4.9.3"
   }
 }
