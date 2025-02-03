@@ -20,5 +20,4 @@ pnpm dev
 pnpm deploy:local
 ```
 
-see detail: https://hardhat.org/tutorial
-
+see detail: https://github.com/Garage3Hack/Book_Web3DevBootstrapForEngineer
