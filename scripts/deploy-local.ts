@@ -1,6 +1,10 @@
 import { ethers } from 'hardhat';
 
 async function main() {
+  console.log(`======================`);
+  console.log(`Deploying contracts...`);
+  console.log(`======================`);
+
   const myToken = await ethers.deployContract('MyToken');
   myToken.waitForDeployment();
 
@@ -18,6 +22,9 @@ async function main() {
 
   // @ts-ignore
   console.log('MyERC721 deployed to:', myERC721.target);
+  console.log(`======================`);
+  console.log(`Deploying complete...`);
+  console.log(`======================`);
 }
 
 main().catch((error) => {

@@ -19,6 +19,7 @@
     "prettier": "^3.4.2"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "4.9.3"
+    "@openzeppelin/contracts": "4.9.3",
+    "seaport": "github:ProjectOpenSea/seaport#1.5"
   }
 }
