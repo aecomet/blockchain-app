@@ -9,6 +9,8 @@ import '@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol';
 
 // 所有者ごとの tokenId を返却する機能を追加
 import '@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol';
+// ロイヤリティ情報の機能を提供する
+import '@openzeppelin/contracts/token/common/ERC2981.sol';
 
 contract MyERC721 is ERC721URIStorage, ERC721Enumerable, AccessControl {
     uint256 private _tokenIdCounter;
@@ -41,6 +43,8 @@ contract MyERC721 is ERC721URIStorage, ERC721Enumerable, AccessControl {
         _tokenIdCounter = _tokenIdCounter + 1;
         _safeMint(to, id);
         _setTokenURI(id, _tokenURI);
+        _setTokenRoyalty(tokenId, to, 500);
+        // NFTの作成者 (=クリエイター) に5%のロイヤリティ設定
         return id;
     }
 
@@ -66,7 +70,7 @@ contract MyERC721 is ERC721URIStorage, ERC721Enumerable, AccessControl {
         address to,
         uint256 tokenId,
         uint256 batchSize
-    ) internal override(ERC721, ERC721Enumerable) {
+    ) internal override(ERC721, ERC721Enumerable, ERC2981) {
         super._beforeTokenTransfer(from, to, tokenId, batchSize);
     }
 
