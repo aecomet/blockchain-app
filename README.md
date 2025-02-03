@@ -17,7 +17,11 @@ pnpm test
 pnpm dev
 
 # deploy
-pnpm deploy:local
+pnpm local
+
+# start front app
+cd frontend
+pnpm dev
 ```
 
 see detail: https://github.com/Garage3Hack/Book_Web3DevBootstrapForEngineer
