@@ -18,6 +18,11 @@ const config: HardhatUserConfig = {
         }
       }
     ]
+  },
+  typechain: {
+    outDir: 'frontend/types',
+    target: 'ethers-v6',
+    alwaysGenerateOverloads: false
   }
 };
 

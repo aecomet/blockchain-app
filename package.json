@@ -4,22 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "restart": "pnpm clean && rm -rf node_modules pnpm-lock.yml && pnpm i && pnpm build && pnpm dev",
     "build": "hardhat compile",
     "test": "hardhat test",
     "dev": "hardhat node",
     "clean": "hardhat clean",
-    "deploy:local": "hardhat run scripts/deploy-local.ts --network localhost"
+    "local": "hardhat run scripts/deploy-local.ts --network localhost"
   },
   "keywords": [],
   "author": "aecomet",
   "license": "MIT",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
-    "hardhat": "^2.18.2",
+    "@nomicfoundation/hardhat-toolbox": "5.0.0",
+    "hardhat": "2.22.18",
     "prettier": "^3.4.2"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.3",
     "seaport": "github:ProjectOpenSea/seaport#1.5"
+  },
+  "resolutions": {
+    "ethers": "6.10.0"
   }
 }
