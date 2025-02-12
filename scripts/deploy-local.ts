@@ -25,6 +25,35 @@ async function main() {
   await seaport.waitForDeployment();
   console.log(`Seaport deployed to: ${seaport.target}`);
 
+  // @ts-ignore
+  const [owner] = await ethers.getSigners();
+
+  const myTimelockController = await ethers.deployContract('MyTimelockController', [
+    60 * 2 /* 2 minutes */,
+    [owner.getAddress()],
+    [owner.getAddress()],
+    owner.getAddress()
+  ]);
+  await myTimelockController.waitForDeployment();
+
+  console.log(`TimelockController deployed to: ${myTimelockController.target}`);
+  const myGovernor = await ethers.deployContract('MyGovernor', [myERC20.target, myTimelockController.target]);
+  await myGovernor.waitForDeployment();
+
+  console.log(`MyGovernor deployed to: ${myGovernor.target}`);
+  const proposerRole = await myTimelockController.PROPOSER_ROLE();
+  const executorRole = await myTimelockController.EXECUTOR_ROLE();
+  const adminRole = await myTimelockController.TIMELOCK_ADMIN_ROLE();
+
+  await myTimelockController.grantRole(proposerRole, myGovernor.target);
+  await myTimelockController.grantRole(executorRole, myGovernor.target);
+
+  console.log(`MyGovernor granted to PROPOSER_ROLE and EXECUTER_ROLE`);
+
+  await myERC20.grantMinterRole(myTimelockController.target);
+
+  console.log(`MyTimelockController granted to MINTER_ROLE`);
+
   console.log(`======================`);
   console.log(`Deploying complete...`);
   console.log(`======================`);

@@ -39,6 +39,7 @@ export interface MyERC721Interface extends Interface {
       | "ownerOf"
       | "renounceRole"
       | "revokeRole"
+      | "royaltyInfo"
       | "safeMint"
       | "safeTransferFrom(address,address,uint256)"
       | "safeTransferFrom(address,address,uint256,bytes)"
@@ -114,6 +115,10 @@ export interface MyERC721Interface extends Interface {
     values: [BytesLike, AddressLike]
   ): string;
   encodeFunctionData(
+    functionFragment: "royaltyInfo",
+    values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "safeMint",
     values: [AddressLike, string]
   ): string;
@@ -186,6 +191,10 @@ export interface MyERC721Interface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "revokeRole", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "royaltyInfo",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "safeMint", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "safeTransferFrom(address,address,uint256)",
@@ -460,6 +469,12 @@ export interface MyERC721 extends BaseContract {
     "nonpayable"
   >;
 
+  royaltyInfo: TypedContractMethod<
+    [tokenId: BigNumberish, salePrice: BigNumberish],
+    [[string, bigint]],
+    "view"
+  >;
+
   safeMint: TypedContractMethod<
     [to: AddressLike, _tokenURI: string],
     [bigint],
@@ -581,6 +596,13 @@ export interface MyERC721 extends BaseContract {
     [role: BytesLike, account: AddressLike],
     [void],
     "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "royaltyInfo"
+  ): TypedContractMethod<
+    [tokenId: BigNumberish, salePrice: BigNumberish],
+    [[string, bigint]],
+    "view"
   >;
   getFunction(
     nameOrSignature: "safeMint"

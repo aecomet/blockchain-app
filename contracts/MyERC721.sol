@@ -12,7 +12,7 @@ import '@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol';
 // ロイヤリティ情報の機能を提供する
 import '@openzeppelin/contracts/token/common/ERC2981.sol';
 
-contract MyERC721 is ERC721URIStorage, ERC721Enumerable, AccessControl {
+contract MyERC721 is ERC721URIStorage, ERC721Enumerable, AccessControl, ERC2981 {
     uint256 private _tokenIdCounter;
 
     // @dev このNFTを作成できる権限を表す定数１
@@ -43,7 +43,7 @@ contract MyERC721 is ERC721URIStorage, ERC721Enumerable, AccessControl {
         _tokenIdCounter = _tokenIdCounter + 1;
         _safeMint(to, id);
         _setTokenURI(id, _tokenURI);
-        _setTokenRoyalty(tokenId, to, 500);
+        _setTokenRoyalty(id, to, 500);
         // NFTの作成者 (=クリエイター) に5%のロイヤリティ設定
         return id;
     }
@@ -70,7 +70,7 @@ contract MyERC721 is ERC721URIStorage, ERC721Enumerable, AccessControl {
         address to,
         uint256 tokenId,
         uint256 batchSize
-    ) internal override(ERC721, ERC721Enumerable, ERC2981) {
+    ) internal override(ERC721, ERC721Enumerable) {
         super._beforeTokenTransfer(from, to, tokenId, batchSize);
     }
 
@@ -91,7 +91,7 @@ contract MyERC721 is ERC721URIStorage, ERC721Enumerable, AccessControl {
  */
     function supportsInterface(
         bytes4 interfaceId
-    ) public view override(AccessControl, ERC721Enumerable, ERC721URIStorage) returns (bool) {
+    ) public view override(AccessControl, ERC721Enumerable, ERC721URIStorage, ERC2981) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
 }

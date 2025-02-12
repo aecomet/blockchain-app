@@ -3,4 +3,6 @@
 /* eslint-disable */
 export type { MyERC20 } from "./MyERC20";
 export type { MyERC721 } from "./MyERC721";
+export type { MyGovernor } from "./MyGovernor";
+export type { MyTimelockController } from "./MyTimelockController";
 export type { MyToken } from "./MyToken";

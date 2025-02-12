@@ -3,4 +3,6 @@
 /* eslint-disable */
 export { MyERC20__factory } from "./MyERC20__factory";
 export { MyERC721__factory } from "./MyERC721__factory";
+export { MyGovernor__factory } from "./MyGovernor__factory";
+export { MyTimelockController__factory } from "./MyTimelockController__factory";
 export { MyToken__factory } from "./MyToken__factory";
