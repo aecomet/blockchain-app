@@ -1,5 +1,5 @@
 import { NavLink } from '@mantine/core';
-import { IconCards, IconHome2, IconShoppingCartBolt } from '@tabler/icons-react';
+import { IconBulb, IconCards, IconHome2, IconShoppingCartBolt } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -26,6 +26,12 @@ export const NavbarLinks = () => {
       color: 'green',
       label: 'Buy NFT',
       path: '/order'
+    },
+    {
+      icon: <IconBulb size={20} />,
+      color: 'green',
+      label: 'MyGovernor',
+      path: '/mygovernor'
     }
   ];
 
